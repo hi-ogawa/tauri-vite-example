@@ -9,9 +9,10 @@ pnpm dev
 
 # build (see misc/pkgbuild/README.md for installation on archlinux)
 pnpm build
-chmod +x src-tauri/target/release/bundle/appimage/tauri-vite-example_0.1.0_amd64.AppImage
-./src-tauri/target/release/bundle/appimage/tauri-vite-example_0.1.0_amd64.AppImage
 ```
+
+![image](https://user-images.githubusercontent.com/4232207/212660828-011d1646-7935-4f8d-aeab-b18432a8f8ad.png)
+
 
 ## references
 
