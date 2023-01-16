@@ -2,7 +2,7 @@
 
 ```sh
 # build deb file
-pnpm build --bundle deb
+pnpm build --bundles deb
 
 # generate PKGBUILD file based on deb file
 bash misc/pkgbuild/generate.sh
