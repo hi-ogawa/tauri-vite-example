@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "dev-vite": "pnpm -C packages/app dev",
+    "build-vite": "pnpm -C packages/app build",
+    "tsc": "tsc -b packages/app",
+    "tsc-dev": "pnpm tsc --watch --preserveWatchOutput",
+    "lint": "run-s lint:*",
+    "lint-check": "run-s lint-check:*",
+    "lint:prettier": "prettier --write --cache .",
+    "lint-check:prettier": "npm run prettier -- --check"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.4"
+  }
+}
