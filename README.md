@@ -1,6 +1,6 @@
 # tauri vite example
 
-tauri port of https://github.com/hi-ogawa/electron-vite-experiment
+[tauri](https://github.com/tauri-apps/tauri) port of https://github.com/hi-ogawa/electron-vite-experiment
 
 ```sh
 # development
