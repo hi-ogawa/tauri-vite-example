@@ -1,0 +1,6 @@
+/* fixed main height */
+html,
+body,
+#root {
+  --at-apply: "h-full";
+}

@@ -13,7 +13,6 @@ pnpm build
 
 ![image](https://user-images.githubusercontent.com/4232207/212660828-011d1646-7935-4f8d-aeab-b18432a8f8ad.png)
 
-
 ## references
 
 - https://tauri.app/v1/guides/getting-started/setup/integrate
