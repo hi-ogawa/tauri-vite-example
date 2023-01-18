@@ -1,25 +1,42 @@
-import React from "react";
 import { Command } from "@tauri-apps/api/shell";
+import { ComposeElements, CustomQueryClientProvider } from "./components/misc";
+import { useQuery } from "@tanstack/react-query";
 
 export function App() {
-  const [output, setOutput] = React.useState("");
+  // prettier-ignore
+  return (
+    <ComposeElements elements={[
+      <CustomQueryClientProvider />,
+      <AppInner />,
+    ]} />
+  );
+}
 
-  async function handleOnClick() {
-    const command = await new Command("pw-dump").execute();
-    setOutput(command.stdout);
-  }
+function AppInner() {
+  const pwDumpQuery = useQuery({
+    queryKey: ["pw-dump"],
+    queryFn: () => {
+      return new Command("pw-dump").execute();
+    },
+    keepPreviousData: true,
+    enabled: false,
+  });
 
   return (
     <div className="h-full p-4">
       <div className="h-full flex flex-col gap-2">
         <button
-          className="bg-gray-200 hover:bg-gray-300 px-2"
-          onClick={() => handleOnClick()}
+          className="bg-gray-200 hover:bg-gray-300 px-2 flex justify-center items-center relative"
+          onClick={() => pwDumpQuery.refetch()}
+          disabled={pwDumpQuery.isFetching}
         >
           run pw-dump
+          {pwDumpQuery.isFetching && (
+            <span className="spinner w-4 h-4 absolute right-2"></span>
+          )}
         </button>
         <pre className="flex-1 border p-2 bg-gray-50 overflow-auto text-sm font-mono">
-          {output}
+          {pwDumpQuery.isSuccess && pwDumpQuery.data.stdout}
         </pre>
       </div>
     </div>
