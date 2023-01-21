@@ -4,3 +4,12 @@ body,
 #root {
   --at-apply: "h-full";
 }
+
+/* dark theme */
+:root {
+  --at-apply: "antd-variables-default";
+}
+
+body {
+  --at-apply: "antd-body";
+}

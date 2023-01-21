@@ -26,7 +26,7 @@ function AppInner() {
     <div className="h-full p-4">
       <div className="h-full flex flex-col gap-2">
         <button
-          className="bg-gray-200 hover:bg-gray-300 px-2 flex justify-center items-center relative"
+          className="antd-btn antd-btn-primary px-2 flex justify-center items-center relative"
           onClick={() => pwDumpQuery.refetch()}
           disabled={pwDumpQuery.isFetching}
         >

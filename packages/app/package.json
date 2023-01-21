@@ -5,6 +5,7 @@
     "build": "vite build --outDir build"
   },
   "devDependencies": {
+    "@hiogawa/unocss-preset-antd": "1.0.0-pre.1",
     "@tsconfig/strictest": "^1.0.2",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",

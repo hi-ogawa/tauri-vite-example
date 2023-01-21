@@ -4,15 +4,10 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
+import { antdPreset } from "@hiogawa/unocss-preset-antd";
 
 export default defineConfig({
-  presets: [presetUno()],
-  shortcuts: {
-    spinner: `
-      animate-spin
-      rounded-full
-      border-2 border-gray-500 border-t-gray-300 border-l-gray-300
-    `,
-  },
+  presets: [antdPreset(), presetUno()],
+  shortcuts: {},
   transformers: [transformerDirectives(), transformerVariantGroup()],
 });
