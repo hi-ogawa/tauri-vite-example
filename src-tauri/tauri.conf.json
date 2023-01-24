@@ -1,8 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "pnpm build-vite",
-    "beforeDevCommand": "pnpm dev-vite",
     "devPath": "http://localhost:18181",
     "distDir": "../packages/app/build"
   },
@@ -12,7 +10,25 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "all": false,
+      "shell": {
+        "all": false,
+        "execute": true,
+        "open": false,
+        "scope": [
+          {
+            "name": "pw-dump",
+            "cmd": "pw-dump",
+            "args": true
+          },
+          {
+            "name": "pw-link",
+            "cmd": "pw-link",
+            "args": true
+          }
+        ],
+        "sidecar": false
+      }
     },
     "bundle": {
       "active": true,

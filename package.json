@@ -1,11 +1,14 @@
 {
   "scripts": {
-    "dev": "tauri dev",
-    "build": "tauri build",
+    "dev": "run-p dev:*",
+    "dev:vite": "pnpm -C packages/app dev",
+    "dev:tsc": "pnpm tsc --watch --preserveWatchOutput",
+    "dev:tauri": "tauri dev",
+    "build": "run-s build:*",
+    "build:vite": "pnpm -C packages/app build",
+    "build:tauri": "tauri build",
     "dev-vite": "pnpm -C packages/app dev",
-    "build-vite": "pnpm -C packages/app build",
     "tsc": "tsc -b packages/app",
-    "tsc-dev": "pnpm tsc --watch --preserveWatchOutput",
     "lint": "run-s lint:*",
     "lint-check": "run-s lint-check:*",
     "lint:prettier": "prettier --write --cache .",
