@@ -1,37 +1,42 @@
 import * as stories from "../components/stories";
 import {
-  createHashRouter,
+  createBrowserRouter,
   NavLink,
   Outlet,
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
 
+// based on https://github.com/hi-ogawa/unocss-preset-antd/blob/a340cb9058301c2d2dc3a5c27631f78d703776af/packages/app/src/app.tsx
+
 export function App() {
   return <RouterProvider router={router} />;
 }
 
-// vite's glob import can be used to dynamically create routes
-// (cf. https://github.com/hi-ogawa/ytsub-v3/blob/2b5931639e5c97f1d9dc6cc7ec4d89df70275084/app/components/main-dev.tsx#L15-L17)
-const storiesRoutes = Object.values(stories).map(
-  (Fc): RouteObject => ({
-    path: Fc.name,
+const storiesRoutes = Object.entries(stories).map(
+  ([name, Fc]): RouteObject => ({
+    path: name,
     element: <Fc />,
   })
 );
 
-const router = createHashRouter([
+const router = createBrowserRouter(
+  [
+    {
+      element: <Root />,
+      children: [
+        ...storiesRoutes,
+        {
+          path: "*",
+          element: <div className="uppercase">select a story from menu</div>,
+        },
+      ],
+    },
+  ],
   {
-    element: <Root />,
-    children: [
-      ...storiesRoutes,
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-    ],
-  },
-]);
+    basename: "/src/dev/",
+  }
+);
 
 function Root() {
   return (
@@ -42,7 +47,7 @@ function Root() {
             {storiesRoutes.map((route) => (
               <li key={route.path} className="flex">
                 <NavLink
-                  className="flex-1 antd-btn antd-btn-text p-2 aria-current-page:(!text-blue-600 !bg-blue-100)"
+                  className="flex-1 antd-btn antd-btn-text p-2 aria-current-page:(text-[var(--antd-colorPrimary)] bg-[var(--antd-controlItemBgActive)]) aria-current-page:dark:(text-white bg-[var(--antd-colorPrimary)])"
                   to={"/" + route.path}
                 >
                   {route.path}
@@ -57,14 +62,6 @@ function Root() {
           <Outlet />
         </div>
       </div>
-    </div>
-  );
-}
-
-function NotFound() {
-  return (
-    <div className="uppercase text-lg text-gray-700">
-      select a story from menu
     </div>
   );
 }
