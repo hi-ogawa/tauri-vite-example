@@ -1,6 +1,6 @@
 import * as stories from "../components/stories";
 import {
-  createBrowserRouter,
+  createHashRouter,
   NavLink,
   Outlet,
   RouteObject,
@@ -20,23 +20,18 @@ const storiesRoutes = Object.entries(stories).map(
   })
 );
 
-const router = createBrowserRouter(
-  [
-    {
-      element: <Root />,
-      children: [
-        ...storiesRoutes,
-        {
-          path: "*",
-          element: <div className="uppercase">select a story from menu</div>,
-        },
-      ],
-    },
-  ],
+const router = createHashRouter([
   {
-    basename: "/src/dev/",
-  }
-);
+    element: <Root />,
+    children: [
+      ...storiesRoutes,
+      {
+        path: "*",
+        element: <div className="uppercase">select a story from menu</div>,
+      },
+    ],
+  },
+]);
 
 function Root() {
   return (
