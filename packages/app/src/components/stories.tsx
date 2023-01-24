@@ -9,6 +9,10 @@ import ReactFlow, {
   OnConnect,
 } from "reactflow";
 
+//
+// https://reactflow.dev/docs/quickstart/#basic-usage
+//
+
 const initialNodes = [
   { id: "1", position: { x: 0, y: 0 }, data: { label: "1" } },
   { id: "2", position: { x: 0, y: 100 }, data: { label: "2" } },
@@ -42,6 +46,18 @@ export function TestReactFlow() {
     </div>
   );
 }
+
+//
+// https://reactflow.dev/docs/examples/overview/
+//
+
+export function TestCustomNode() {
+  return null;
+}
+
+//
+// demo
+//
 
 export function TestButton() {
   return (

@@ -27,7 +27,7 @@ export function ComposeElements({
   elements,
 }: {
   elements: React.ReactElement[];
-}) {
+}): React.ReactElement {
   return elements.reduceRight(
     (acc, el) => React.cloneElement(el, {}, acc),
     <></>
