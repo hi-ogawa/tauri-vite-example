@@ -8,6 +8,7 @@ import ReactFlow, {
   addEdge,
   OnConnect,
 } from "reactflow";
+import { OverviewFlow } from "./reactflow/overview";
 
 //
 // https://reactflow.dev/docs/quickstart/#basic-usage
@@ -30,7 +31,7 @@ export function TestReactFlow() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-2xl h-2xl p-4 border">
+      <div className="w-4xl h-2xl p-4 border">
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -51,8 +52,14 @@ export function TestReactFlow() {
 // https://reactflow.dev/docs/examples/overview/
 //
 
-export function TestCustomNode() {
-  return null;
+export function TestOverviewFlow() {
+  return (
+    <div className="flex justify-center">
+      <div className="w-4xl h-2xl p-4 border">
+        <OverviewFlow />
+      </div>
+    </div>
+  );
 }
 
 //

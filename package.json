@@ -8,7 +8,7 @@
     "build:vite": "pnpm -C packages/app build",
     "build:tauri": "tauri build",
     "dev-vite": "pnpm -C packages/app dev",
-    "tsc": "tsc -b packages/app",
+    "tsc": "tsc -b",
     "lint": "run-s lint:*",
     "lint-check": "run-s lint-check:*",
     "lint:prettier": "prettier --write --cache .",
