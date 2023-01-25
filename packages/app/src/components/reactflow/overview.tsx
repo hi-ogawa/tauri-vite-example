@@ -5,6 +5,7 @@ import ReactFlow, {
   Background,
   useNodesState,
   useEdgesState,
+  OnConnect,
 } from "reactflow";
 
 import {
@@ -24,14 +25,11 @@ const minimapStyle = {
   height: 120,
 };
 
-const onInit = (reactFlowInstance: any) =>
-  console.log("flow loaded:", reactFlowInstance);
-
 export function OverviewFlow() {
-  const [nodes, _setNodes, onNodesChange] = useNodesState(initialNodes as any);
+  const [nodes, _setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = React.useCallback(
-    (params: any) => setEdges((eds) => addEdge(params, eds)),
+  const onConnect: OnConnect = React.useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
     []
   );
 
@@ -39,7 +37,7 @@ export function OverviewFlow() {
   // this could also be done with a custom edge for example
   const edgesWithUpdatedTypes = edges.map((edge) => {
     if (edge.sourceHandle) {
-      const edgeType = nodes.find((node) => node.type === "custom")!.data
+      const edgeType = nodes.find((node) => node.type === "custom")?.data
         .selects[edge.sourceHandle];
       edge.type = edgeType;
     }
@@ -54,7 +52,7 @@ export function OverviewFlow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      onInit={onInit}
+      onInit={(instance) => console.log("flow loaded:", instance)}
       fitView
       attributionPosition="top-right"
       nodeTypes={nodeTypes}

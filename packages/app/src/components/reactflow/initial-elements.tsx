@@ -1,6 +1,10 @@
-import { MarkerType, Position } from "reactflow";
+import { Edge, MarkerType, Node, Position } from "reactflow";
 
-export const nodes = [
+export interface NodeDataSelect {
+  selects: Record<string, string>;
+}
+
+export const nodes: Node[] = [
   {
     id: "1",
     type: "input",
@@ -83,7 +87,7 @@ export const nodes = [
   },
 ];
 
-export const edges = [
+export const edges: Edge[] = [
   { id: "e1-2", source: "1", target: "2", label: "this is an edge label" },
   { id: "e1-3", source: "1", target: "3", animated: true },
   {
