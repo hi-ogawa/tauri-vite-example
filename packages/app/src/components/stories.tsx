@@ -54,8 +54,8 @@ export function TestReactFlow() {
 
 export function TestOverviewFlow() {
   return (
-    <div className="flex justify-center">
-      <div className="w-4xl h-2xl p-4 border">
+    <div className="h-full flex justify-center">
+      <div className="w-full h-full p-4 border">
         <OverviewFlow />
       </div>
     </div>

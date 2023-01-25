@@ -35,7 +35,7 @@ const router = createHashRouter([
 
 function Root() {
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <div className="flex-[1_0_0] border-r">
         <div className="sticky top-0 p-1.5">
           <ul className="flex flex-col gap-1.5">
@@ -52,8 +52,8 @@ function Root() {
           </ul>
         </div>
       </div>
-      <div className="flex-[5_0_0]">
-        <div className="m-4">
+      <div className="flex-[5_0_0] h-full">
+        <div className="p-4 h-full">
           <Outlet />
         </div>
       </div>
